@@ -40,4 +40,4 @@ on iOS
 npx react-native run-ios 
 
 on Android
-npx react-native run android
+npx react-native run-android
