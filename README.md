@@ -98,4 +98,13 @@ Here lives the theme for the application, including spacing, colors, and typogra
 **utils**
 This is a the place for miscellaneous helpers and utilities. Things like date helpers, formatters, etc. are often found here. However, it should only be used for things that are truely shared across your application. If a helper or utility is only used by a specific component or model, consider co-locating your helper with that component or model.
 
-**app.tsx** This is the entry point to the app. This is where you will find the main App component which renders the rest of the application.
+**app.tsx** is the entry point to the app.
+
+
+** To run the App 
+
+on iOS
+npx react-native run-ios 
+
+on Android
+or npx react-native run android
