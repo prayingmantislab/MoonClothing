@@ -2,6 +2,7 @@ import React, { FC } from "react"
 import { View, ViewStyle, TextStyle, ImageStyle, SafeAreaView } from "react-native"
 import { StackScreenProps } from "@react-navigation/stack"
 import { observer } from "mobx-react-lite"
+
 import {
   Button,
   Header,
@@ -13,7 +14,7 @@ import {
 import { color, spacing, typography } from "../../theme"
 import { NavigatorParamList } from "../../navigators"
 
-const bowserLogo = require("./bowser.png")
+const moonLogo = require("./moonLogo.png")
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
@@ -38,10 +39,7 @@ const HEADER_TITLE: TextStyle = {
   textAlign: "center",
   letterSpacing: 1.5,
 }
-const TITLE_WRAPPER: TextStyle = {
-  ...TEXT,
-  textAlign: "center",
-}
+
 const TITLE: TextStyle = {
   ...TEXT,
   ...BOLD,
@@ -49,18 +47,13 @@ const TITLE: TextStyle = {
   lineHeight: 38,
   textAlign: "center",
 }
-const ALMOST: TextStyle = {
-  ...TEXT,
-  ...BOLD,
-  fontSize: 26,
-  fontStyle: "italic",
-}
-const BOWSER: ImageStyle = {
+
+const Logo: ImageStyle = {
   alignSelf: "center",
   marginVertical: spacing[5],
   maxWidth: "100%",
-  width: 343,
-  height: 230,
+  width: 200,
+  height: 100,
 }
 const CONTENT: TextStyle = {
   ...TEXT,
@@ -94,21 +87,13 @@ export const WelcomeScreen: FC<StackScreenProps<NavigatorParamList, "welcome">> 
       <View testID="WelcomeScreen" style={FULL}>
         <GradientBackground colors={["#422443", "#281b34"]} />
         <Screen style={CONTAINER} preset="scroll" backgroundColor={color.transparent}>
-          <Header headerTx="welcomeScreen.poweredBy" style={HEADER} titleStyle={HEADER_TITLE} />
-          <Text style={TITLE_WRAPPER}>
-            <Text style={TITLE} text="Your new app, " />
-            <Text style={ALMOST} text="almost" />
-            <Text style={TITLE} text="!" />
-          </Text>
-          <Text style={TITLE} preset="header" tx="welcomeScreen.readyForLaunch" />
-          <Image source={bowserLogo} style={BOWSER} />
+          <Header headerTx="welcomeScreen.headerTitle" style={HEADER} titleStyle={HEADER_TITLE} />
+          <Text style={TITLE} text="Welcome to" />
+          <Text style={TITLE} text="Moon Clothing Store" />
+          <Image source={moonLogo} style={Logo} />
           <Text style={CONTENT}>
-            This probably isn't what your app is going to look like. Unless your designer handed you
-            this screen and, in that case, congrats! You're ready to ship.
-          </Text>
-          <Text style={CONTENT}>
-            For everyone else, this is where you'll see a live preview of your fully functioning app
-            using Ignite.
+            Build your own clothing sets of clothes and save them for future use, also filter them
+            by color and size from the inventory.
           </Text>
         </Screen>
         <SafeAreaView style={FOOTER}>
