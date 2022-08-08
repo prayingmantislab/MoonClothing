@@ -3,8 +3,8 @@ import { Instance, SnapshotIn, SnapshotOut, types } from "mobx-state-tree"
 /**
  * Model description here for TypeScript hints.
  */
-export const ShoeModel = types
-  .model("Shoe")
+export const ShirtModel = types
+  .model("Shirt")
   .props({
     id: types.identifier,
     type: types.string,
@@ -15,7 +15,7 @@ export const ShoeModel = types
   .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
   .actions((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
 
-export interface Shoe extends Instance<typeof ShoeModel> {}
-export interface ShoeSnapshotOut extends SnapshotOut<typeof ShoeModel> {}
-export interface ShoeSnapshotIn extends SnapshotIn<typeof ShoeModel> {}
-export const createShoeDefaultModel = () => types.optional(ShoeModel, {})
+export interface Shirt extends Instance<typeof ShirtModel> {}
+export interface ShirtSnapshotOut extends SnapshotOut<typeof ShirtModel> {}
+export interface ShirtSnapshotIn extends SnapshotIn<typeof ShirtModel> {}
+export const createShirtDefaultModel = () => types.optional(ShirtModel, {})
