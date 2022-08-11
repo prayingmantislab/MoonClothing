@@ -6,6 +6,7 @@ import { Header, Screen, Text, AutoImage as Image, GradientBackground } from "..
 import { color, spacing } from "../../theme"
 import { useStores } from "../../models"
 import { NavigatorParamList } from "../../navigators"
+// import { async } from "validate.js"
 
 const FULL: ViewStyle = {
   flex: 1,
@@ -56,6 +57,7 @@ export const DemoListScreen: FC<StackScreenProps<NavigatorParamList, "demoList">
 
       fetchData()
     }, [])
+    // const getMovie = async () => {
 
     return (
       <View testID="DemoListScreen" style={FULL}>
