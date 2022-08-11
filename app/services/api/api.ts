@@ -2,11 +2,47 @@ import { ApisauceInstance, create, ApiResponse } from "apisauce"
 import { getGeneralApiProblem } from "./api-problem"
 import { ApiConfig, DEFAULT_API_CONFIG } from "./api-config"
 import * as Types from "./api.types"
+import { QuestionSnapshotIn } from "../../models/question/question"
+import * as uuid from "uuid"
 
+const API_PAGE_SIZE = 50
+
+const convertQuestion = (raw: any): QuestionSnapshotIn => {
+  const id = uuid.v1().toString()
+
+  return {
+    id: id,
+    category: raw.category,
+    type: raw.type,
+    difficulty: raw.difficulty,
+    question: raw.question,
+    correct_answer: raw.correct_answer,
+    incorrect_answers: raw.incorrect_answers,
+  }
+}
 /**
  * Manages all requests to the API.
  */
 export class Api {
+  async getQuestions(): Promise<Types.GetQuestionsResult> {
+    // make the api call
+
+    const response: ApiResponse<any> = await this.apisauce.get("", { amount: API_PAGE_SIZE })
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response)
+      if (problem) return problem
+    }
+    // transform the data into the format we are expecting
+    try {
+      const rawQuestions = response.data.results
+      const convertedQuestion: QuestionSnapshotIn[] = rawQuestions.map(convertQuestion)
+      return { kind: "ok", questions: convertedQuestion }
+    } catch (e) {
+      __DEV__ && console.log(e.message)
+      return { kind: "bad-data" }
+    }
+  }
+
   /**
    * The underlying apisauce instance which performs the requests.
    */
