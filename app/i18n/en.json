@@ -13,6 +13,9 @@
     "continue": "CONTINUE",
     "question": "Question"
   },
+  "questionScreen": {
+    "header": "Questions"
+  },
   "demoScreen": {
     "howTo": "HOW TO",
     "title": "What’s In This Stack?",
