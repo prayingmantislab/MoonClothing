@@ -10,7 +10,8 @@
   "welcomeScreen": {
     "headerTitle": "Home",
     "readyForLaunch": "Ready for launch.",
-    "continue": "CONTINUE"
+    "continue": "CONTINUE",
+    "question": "Question"
   },
   "demoScreen": {
     "howTo": "HOW TO",
