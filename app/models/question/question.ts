@@ -1,4 +1,5 @@
-import { Instance, SnapshotOut, types, SnapshotIn } from "mobx-state-tree"
+import { Instance, SnapshotOut, types } from "mobx-state-tree"
+import shuffle from "lodash.shuffle"
 
 /**
  * Model description here for TypeScript hints.
@@ -11,13 +12,26 @@ export const QuestionModel = types
     type: types.enumeration(["multiple", "boolean"]),
     difficulty: types.enumeration(["easy", "medium", "hard"]),
     question: types.maybe(types.string),
-    correct_answer: types.maybe(types.string),
-    incorrect_answers: types.optional(types.array(types.string), []),
+    correctAnswer: types.maybe(types.string),
+    incorrectAnswers: types.optional(types.array(types.string), []),
+    guess: types.maybe(types.string),
   })
-  .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
-  .actions((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
+  .views((self) => ({
+    get allAnswers() {
+      return shuffle(self.incorrectAnswers.concat([self.correctAnswer]))
+    },
+    get isCorrect() {
+      return self.guess === self.correctAnswer
+    },
+  })) // eslint-disable-line @typescript-eslint/no-unused-vars
+  .actions((self) => ({
+    setGuess(guess: string) {
+      self.guess = guess
+    },
+  })) // eslint-disable-line @typescript-eslint/no-unused-vars
 
-export interface Question extends Instance<typeof QuestionModel> {}
-export interface QuestionSnapshotOut extends SnapshotOut<typeof QuestionModel> {}
-export interface QuestionSnapshotIn extends SnapshotIn<typeof QuestionModel> {}
+type QuestionType = Instance<typeof QuestionModel>
+export interface Question extends QuestionType {}
+type QuestionSnapshotType = SnapshotOut<typeof QuestionModel>
+export interface QuestionSnapshot extends QuestionSnapshotType {}
 export const createQuestionDefaultModel = () => types.optional(QuestionModel, {})
