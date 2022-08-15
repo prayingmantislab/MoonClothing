@@ -82,7 +82,7 @@ const FOOTER_CONTENT: ViewStyle = {
 export const WelcomeScreen: FC<StackScreenProps<NavigatorParamList, "welcome">> = observer(
   ({ navigation }) => {
     const nextScreen = () => navigation.navigate("demo")
-    const toQuestionScreen = () => navigation.navigate("question")
+    const toStatesScreen = () => navigation.navigate("states")
     return (
       <View testID="WelcomeScreen" style={FULL}>
         <GradientBackground colors={["#422443", "#281b34"]} />
@@ -110,7 +110,7 @@ export const WelcomeScreen: FC<StackScreenProps<NavigatorParamList, "welcome">> 
               style={CONTINUE}
               textStyle={CONTINUE_TEXT}
               tx="welcomeScreen.question"
-              onPress={toQuestionScreen}
+              onPress={toStatesScreen}
             />
           </View>
         </SafeAreaView>

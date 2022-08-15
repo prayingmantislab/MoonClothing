@@ -46,16 +46,16 @@ export const DemoListScreen: FC<StackScreenProps<NavigatorParamList, "demoList">
   ({ navigation }) => {
     const goBack = () => navigation.goBack()
 
-    const { characterStore } = useStores()
-    const { characters } = characterStore
+    // const { characterStore } = useStores()
+    // const { characters } = characterStore
 
-    useEffect(() => {
-      async function fetchData() {
-        await characterStore.getCharacters()
-      }
+    // useEffect(() => {
+    //   async function fetchData() {
+    //     await characterStore.getCharacters()
+    //   }
 
-      fetchData()
-    }, [])
+    //   fetchData()
+    // }, [])
 
     return (
       <View testID="DemoListScreen" style={FULL}>
@@ -68,7 +68,7 @@ export const DemoListScreen: FC<StackScreenProps<NavigatorParamList, "demoList">
             style={HEADER}
             titleStyle={HEADER_TITLE}
           />
-          <FlatList
+          {/* <FlatList
             contentContainerStyle={FLAT_LIST}
             data={[...characters]}
             keyExtractor={(item) => String(item.id)}
@@ -80,7 +80,7 @@ export const DemoListScreen: FC<StackScreenProps<NavigatorParamList, "demoList">
                 </Text>
               </View>
             )}
-          />
+          /> */}
         </Screen>
       </View>
     )
