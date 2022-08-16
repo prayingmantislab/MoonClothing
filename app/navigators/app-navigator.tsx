@@ -47,7 +47,7 @@ const AppStack = () => {
       <Stack.Screen name="welcome" component={WelcomeScreen} />
       <Stack.Screen name="demo" component={DemoScreen} />
       <Stack.Screen name="demoList" component={DemoListScreen} />
-      {/* <Stack.Screen name="question" component={QuestionScreen} /> */}
+      <Stack.Screen name="question" component={QuestionScreen} />
       <Stack.Screen name="states" component={StatesScreen} />
       {/** 🔥 Your screens go here */}
     </Stack.Navigator>

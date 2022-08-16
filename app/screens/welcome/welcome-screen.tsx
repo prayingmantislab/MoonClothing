@@ -81,7 +81,8 @@ const FOOTER_CONTENT: ViewStyle = {
 
 export const WelcomeScreen: FC<StackScreenProps<NavigatorParamList, "welcome">> = observer(
   ({ navigation }) => {
-    const nextScreen = () => navigation.navigate("demo")
+    // const nextScreen = () => navigation.navigate("demo")
+    const toQuestionScreen = () => navigation.navigate("question")
     const toStatesScreen = () => navigation.navigate("states")
     return (
       <View testID="WelcomeScreen" style={FULL}>
@@ -103,7 +104,7 @@ export const WelcomeScreen: FC<StackScreenProps<NavigatorParamList, "welcome">> 
               style={CONTINUE}
               textStyle={CONTINUE_TEXT}
               tx="welcomeScreen.continue"
-              onPress={nextScreen}
+              onPress={toQuestionScreen}
             />
             <Button
               testID="question-screen-button"
